@@ -120,6 +120,7 @@ class _LoginState extends State<Login> {
           Container(
             width: widthofdevice * 0.5,
             child: TextFormField(
+              keyboardType: TextInputType.emailAddress,
               validator: (value) =>
                   value!.isEmpty ? "Please enter email" : null,
               onSaved: (value) => email = value!,
@@ -132,26 +133,27 @@ class _LoginState extends State<Login> {
           Container(
             width: widthofdevice * 0.5,
             child: TextFormField(
+              obscureText: true,
               validator: (value) =>
-                  value!.isEmpty ? "Please enter email" : null,
+                  value!.isEmpty ? "Please enter your password" : null,
               onSaved: (value) => password = value!,
               decoration: const InputDecoration(
-                hintText: "Enter Email address",
+                hintText: "Enter your password",
               ),
             ),
           ),
-          ElevatedButton(
-            onPressed: () {
+          Padding(padding: EdgeInsets.all(10)),
+          ElevatedButton(onPressed: () {}, child: Text("Log in")),
+          Padding(padding: EdgeInsets.all(50)),
+          GestureDetector(
+            onTap: () {
               authenticate();
               setState(() {});
               print(_authorized);
             },
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Text(_isAuthenticating ? 'Authenticating ...' : 'Authenticate'),
-                const Icon(Icons.fingerprint),
-              ],
+            child: Icon(
+              Icons.fingerprint,
+              size: 80,
             ),
           ),
         ],
