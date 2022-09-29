@@ -28,6 +28,7 @@ class _LoginState extends State<Login> {
   void initState() {
     cancheckBiometrics();
     getavailablebiometrics();
+    authenticate();
     super.initState();
   }
 
